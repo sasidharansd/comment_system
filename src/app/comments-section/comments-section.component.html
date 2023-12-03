@@ -1,0 +1,11 @@
+@for (comment of commentsService.parentCommentsList(); track comment.id) {
+<div class="comment-wrapper">
+    <app-comment [comment]="comment"></app-comment>
+
+    @for (reply of getReplyItems(comment.id); track $index) {
+    <div class="reply-comment">
+        <app-comment [comment]="reply"></app-comment>
+    </div>
+    }
+</div>
+}

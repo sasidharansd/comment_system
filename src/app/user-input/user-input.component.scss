@@ -1,0 +1,15 @@
+.comment-input-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    label{
+        margin: 10px;
+        font-size: 22px;
+        color: oklch(19.37% 0.006 300.98);
+        font-weight: 500;
+        font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+    }
+}

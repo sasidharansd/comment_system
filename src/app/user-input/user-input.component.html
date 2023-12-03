@@ -1,0 +1,14 @@
+<form [formGroup]="commentForm" #formDirective="ngForm" class="comment-input-form" (ngSubmit)="postComment(formDirective)">
+    <label>Name:</label>
+    <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Enter your name" formControlName="name">
+    </mat-form-field>
+    <label>Comment:</label>
+    <mat-form-field appearance="outline">
+        <textarea matInput placeholder="Enter your comment" formControlName="comment" cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" maxlength="250"></textarea>
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit"
+        [disabled]="!commentForm.valid || !commentForm.value.name?.trim()?.length || !commentForm.value.comment?.trim()?.length">
+        Post New Comment</button>
+</form>

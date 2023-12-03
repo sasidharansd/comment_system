@@ -1,0 +1,20 @@
+<form [formGroup]="commentForm" class="comment-input-form" (ngSubmit)="postReply()">
+    <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Enter your name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <textarea matInput 
+        placeholder="Enter your reply comment" 
+        formControlName="comment"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+        maxlength="250"
+        ></textarea>
+    </mat-form-field>
+    <div class="action-buttons">
+        <button mat-flat-button color="primary" type="submit" [disabled]="!commentForm.valid || !commentForm.value.comment?.trim()?.length || !commentForm.value.name?.trim()?.length">Post Comment</button>
+        <button mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+    </div>
+</form>

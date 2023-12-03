@@ -1,0 +1,60 @@
+.comment {
+    padding: 10px;
+
+    .name {
+        margin-right: 10px;
+        color: rgb(27, 117, 208);
+    }
+
+    .sub-details {
+        color: gray;
+        margin-right: 10px;
+    }
+
+    .content-wrapper {
+        margin: 10px 0;
+
+        .content{
+            max-width: 520px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            .action-buttons {
+                button {
+                    font-size: 14px;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+
+    .action-buttons {
+        .action-wrapper{
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 10px;
+            color: rgb(113, 128, 126);
+
+            .action-label{
+                margin-left: 5px;
+            }
+            mat-icon{
+                font-size: 19px;
+                margin: 5px 0 0 5px;
+            }
+
+            &:hover{
+               background-color: rgba(26,26,27,0.1);
+            }
+        }
+
+        button {
+            font-size: 14px;
+            margin: 0 5px;
+        }
+    }
+}

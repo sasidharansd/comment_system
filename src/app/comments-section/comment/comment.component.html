@@ -1,0 +1,49 @@
+<div class="comment">
+    <span class="name">{{comment.name}}</span>
+    <span class="sub-details">{{comment.timestamp | date}}</span>
+    @if (comment.isEdited) {
+    <span class="sub-details">- Edited</span>
+    }
+    <!-- <hr> -->
+    <div class="content-wrapper">
+        @if (!isCommentEditInProgress) {
+        <div class="content">
+            {{comment.content}}
+        </div>
+        } @else {
+        <div>
+            <form [formGroup]="commentEditForm">
+                <mat-form-field appearance="outline">
+                    <textarea matInput placeholder="Enter your comment" formControlName="comment" cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="7"
+                        maxlength="250"></textarea>
+                </mat-form-field>
+                <div class="action-buttons">
+                    <button mat-flat-button color="primary"
+                        [disabled]="!commentEditForm.valid || !commentEditForm.value.comment?.trim()?.length"
+                        (click)="updateComment()">Update Comment</button>
+                    <button mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+        }
+    </div>
+    <div class="action-buttons">
+        @if (!comment.parentId) {
+        <div class="action-wrapper" (click)="replyComment()">
+            <span class="action-label"> Reply </span>
+            <mat-icon class="action-icon material-icons-outlined">chat_bubble_outline</mat-icon>
+        </div>
+        }
+        <div class="action-wrapper" (click)="editComment()">
+            <span class="action-label"> Edit </span>
+            <mat-icon class="ction-icon material-icons-outlined">edit_outline</mat-icon>
+        </div>
+
+    </div>
+</div>
+@if (isReplyInProgress) {
+<hr>
+<app-reply (closeReplyEmit)="cancel()" [parentId]="comment.id"></app-reply>
+<hr>
+}
